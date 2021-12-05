@@ -16,5 +16,5 @@ public class LegoTheme {
     @Id
     int id;
     String name;
-    int parent_id;
+    int parentId;
 }
