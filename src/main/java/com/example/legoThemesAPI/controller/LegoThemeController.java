@@ -17,21 +17,21 @@ public class LegoThemeController {
     private LegoThemeService legoThemeService;
 
     @GetMapping("/leogotheme")
-    public ResponseEntity<List<LegoTheme>> getAll(){
+    public ResponseEntity<List<LegoTheme>> getAll() {
         return ResponseEntity.ok(legoThemeService.findAll());
     }
 
     @GetMapping("/leogotheme/{id}")
-    public ResponseEntity<LegoTheme> getLegoThemeById(@PathVariable("id") int id){
+    public ResponseEntity<LegoTheme> getLegoThemeById(@PathVariable("id") int id) {
         LegoTheme legoTheme = legoThemeService.findById(id);
-        if (legoTheme == null){
+        if (legoTheme == null) {
             ResponseEntity.notFound();
         }
         return ResponseEntity.ok(legoTheme);
     }
 
     @GetMapping("/leogotheme/search/{word}")
-    public ResponseEntity<List<LegoTheme>> getResult(@PathVariable("word") String word){
+    public ResponseEntity<List<LegoTheme>> getResult(@PathVariable("word") String word) {
         return ResponseEntity.ok(legoThemeService.findBySearchWord(word));
     }
 }

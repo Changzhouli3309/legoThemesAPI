@@ -28,7 +28,7 @@ public class CSV_FileReader implements CommandLineRunner {
 
         String csvFilePath = "themes.csv";
 
-        try (Scanner scanner = new Scanner(new File(csvFilePath), StandardCharsets.UTF_8);){
+        try (Scanner scanner = new Scanner(new File(csvFilePath), StandardCharsets.UTF_8);) {
 
             scanner.nextLine(); // skip header line
 
@@ -38,10 +38,10 @@ public class CSV_FileReader implements CommandLineRunner {
                 String name = data[1];
                 int parent_id = data.length == 3 ? Integer.parseInt(data[2]) : 0;
 
-                legoThemeRepo.save(new LegoTheme(id,name,parent_id));
+                legoThemeRepo.save(new LegoTheme(id, name, parent_id));
             }
 
-        }catch (IOException | NumberFormatException e){
+        } catch (IOException | NumberFormatException e) {
             System.err.println(e);
         }
     }

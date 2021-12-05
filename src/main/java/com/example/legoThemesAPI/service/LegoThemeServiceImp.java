@@ -16,19 +16,19 @@ public class LegoThemeServiceImp implements LegoThemeService {
     private LegoThemeRepo legoThemeRepo;
 
     @Override
-    public List<LegoTheme> findAll(){
+    public List<LegoTheme> findAll() {
         return (List<LegoTheme>) legoThemeRepo.findAll();
     }
 
     @Override
-    public List<LegoTheme> findBySearchWord(String word){
+    public List<LegoTheme> findBySearchWord(String word) {
         List<LegoTheme> returnList = new ArrayList<>();
 
-        if(Checker.isAllowedNumber(word)){
+        if (Checker.isAllowedNumber(word)) {
             int n = Integer.parseInt(word);
             LegoTheme legoTheme = findById(n);
 
-            if (legoTheme != null){
+            if (legoTheme != null) {
                 returnList.add(legoTheme);
 
                 returnList.addAll(findByParentId(n));
@@ -44,17 +44,17 @@ public class LegoThemeServiceImp implements LegoThemeService {
     }
 
     @Override
-    public LegoTheme findById(int id){
+    public LegoTheme findById(int id) {
         return legoThemeRepo.findById(id).orElse(null);
     }
 
     @Override
-    public List<LegoTheme> findByParentId(int parentId){
+    public List<LegoTheme> findByParentId(int parentId) {
         return legoThemeRepo.findByParentId(parentId);
     }
 
     @Override
-    public List<LegoTheme> findByNameStartingWith(String name){
+    public List<LegoTheme> findByNameStartingWith(String name) {
         return legoThemeRepo.findByNameStartingWith(name);
     }
 }
